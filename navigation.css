@@ -1,0 +1,34 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  padding: 0;
+  flex-basis: 30pt;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navitem {
+  width: 15pt;
+  backface-visibility: hidden;
+}
+
+.toggle, .page, .navitem.calendar {
+  display: none;
+}
+
+.calendar.toggle, .calendar.page {
+  display: inline;
+}
+
+hr {
+  margin: 0;
+}
