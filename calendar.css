@@ -105,6 +105,9 @@
 
 .timetitle {
   width: 15%;
+  height: 960pt;
+  display: flex;
+  flex-direction: column;
 }
 
 .timetitlesection {
@@ -114,8 +117,7 @@
   color: gray;
   position: relative;
   top: 34pt;
-  float: right;
-  right: 5pt;
+  left: calc(100% - 25pt);
 }
 
 .time {
