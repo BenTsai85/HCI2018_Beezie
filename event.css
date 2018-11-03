@@ -77,3 +77,10 @@
   font-size: 7pt;
   color: lightgray;
 }
+
+.eventadd {
+  width: 20pt;
+  position: absolute;
+  bottom: 10pt;
+  right: 10pt;
+}

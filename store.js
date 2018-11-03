@@ -1,14 +1,24 @@
 const initialState = {
-  availability: 'unavailable',
+  calendar: {
+    button: 'unavailable',
+    color: '#000000',
+    dbltap: false,
+  },
   nav: 'calendar',
 }
 
-const reducer = (state = initialState, actions) => {
-  switch (actions.type) {
-    case 'availability':
-      return { ...state, availability: actions.payload }
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'calendar':
+      switch (action.subtype) {
+        case 'button':
+          return { ...state, calendar: { ...state.calendar, button: action.payload } }
+        case 'dbltap':
+          return { ...state, calendar: { ...state.calendar, dbltap: !state.calendar.dbltap } }
+      }
+      break
     case 'nav':
-      return { ...state, nav: actions.payload }
+      return { ...state, nav: action.payload }
   }
 }
 
