@@ -56,6 +56,9 @@ store.subscribe(() => {
       $('.EDnoimg.toggle').show()
       break
   }
+  if (event.host !== 0) {
+    $('.EDedit').hide()
+  }
 })
 
 $('.backbutton').click(() => {
