@@ -2,7 +2,7 @@ store.subscribe(() => {
   const state = store.getState()
   const event = state.event
   const participants = event.participants.map(p => state.accounts.find(a => a.id === p[0])).filter(p => p.name !== 'Sam')
-  participants.push(account)
+  participants.push(state.account)
   const going = event.participants.reduce((sum, element) => sum + (element[1] === 0), 0)
   const maybe = event.participants.reduce((sum, element) => sum + (element[1] === 1), 0)
   const willingness = event.participants.find(p => p[0] === 0)[1]

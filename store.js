@@ -6,7 +6,6 @@ for (let i = 0, j = 0; i < mockup.events.length, j < account.events.length; ++i)
     ++j
   }
 }
-const accounts = mockup.accounts
 
 const initialState = {
   calendar: {
@@ -17,7 +16,7 @@ const initialState = {
   nav: 'calendar',
   events,
   account,
-  accounts,
+  accounts: mockup.accounts,
   event: events[0]
 }
 
@@ -32,7 +31,7 @@ const reducer = (state = initialState, action) => {
         case 'update':
           mockup.accounts = mockup.accounts.map(a => a.name === "Sam" ? { ...a, calendar: action.payload }: a )
           window.localStorage.setItem('Beezie', JSON.stringify(mockup))
-          return { ...state, account: { ...account, calendar: action.payload } }
+          return { ...state, account: { ...account, calendar: action.payload }, accounts: mockup.accounts }
       }
       break
     case 'nav':
