@@ -1,11 +1,23 @@
 store.subscribe(() => {
   const state = store.getState()
-  $('.navbar .navitem').show()
-  $('.navbar .toggle').hide()
-  $('.page').hide()
-  $('.navbar .' + state.nav).hide()
-  $('.navbar .' + state.nav + '.toggle').show()
-  $('.' + state.nav + '.page').show()
+  if (state.nav === 'hide') {
+    $('.mainPage').hide()
+    $('.subPage').show()
+  } else {
+    $('.mainPage').show()
+    $('.subPage').hide()
+    $('.navbar').show()
+    $('.navbar .navitem').show()
+    $('.navbar .toggle').hide()
+    $('.page').hide()
+    $('.navbar .' + state.nav).hide()
+    $('.navbar .' + state.nav + '.toggle').show()
+    $('.' + state.nav + '.page').show()
+  }
+})
+
+store.dispatch({
+  type: 'init'
 })
 
 $('.navitem').click(e => {

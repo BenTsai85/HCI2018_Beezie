@@ -1,20 +1,55 @@
+const pad2 = num => {
+  let str = String(num)
+  if (str.length === 1) {
+    str = '0' + str
+  }
+  return str
+}
+
+const timeadd15 = time => {
+  time = new Date(time.slice(0, 4), time.slice(4, 6), time.slice(6, 8), time.slice(8, 10), time.slice(10, 12))
+  time.setTime(time.getTime() + 900000)
+  return time.getFullYear() + pad2(time.getMonth()) + pad2(time.getDate()) + pad2(time.getHours()) + pad2(time.getMinutes())
+}
+
+const color2num = color => {
+  return Number(color.slice(4, color.indexOf(','))) / 85
+}
+
+const num2color = num => {
+  let str = Math.floor(85 * num).toString(16)
+  if (str.length < 2) {
+    str = '0' + str
+  }
+  return '#' + str + str + str
+}
+
 store.subscribe(() => {
-  const state = store.getState().calendar
+  const state = store.getState()
+  const page = state.calendar
+  const calendar = state.account.calendar
   $('.description').addClass('untoggled')
-  $('.description.' + state.button).removeClass('untoggled')
+  $('.description.' + page.button).removeClass('untoggled')
   $('.circle').hide()
   $('.circle.untoggled').show()
-  $('.circle.' + state.button).show()
-  $('.circle.untoggled.' + state.button).hide()
+  $('.circle.' + page.button).show()
+  $('.circle.untoggled.' + page.button).hide()
+
+  for (let temp of calendar) {
+    for (let time = temp[0]; time <= temp[1]; time = timeadd15(time)) {
+      $('#' + time).css({ backgroundColor: num2color(temp[2]), borderBottomColor: num2color(temp[2]), borderBottomStyle: 'solid' })
+    }
+  }
+})
+
+store.dispatch({
+  type: 'init'
 })
 
 var tapped = false, doubleTapped = false, color = '#000000'
 
 $('.availitem').click(e => {
-  let target = $(e.target)
-  if (target.parent().hasClass('availitem')) {
-    target = target.parent()[0]
-  }
+  let target = e.currentTarget
 
   const button = target.classList[target.classList.length - 1]
 
@@ -40,7 +75,7 @@ $('.availitem').click(e => {
   }
 })
 
-$('.timeblock').on('touchstart', e => {
+$('.mainPage .timeblock').on('touchstart', e => {
   if (!tapped) {
     tapped = setTimeout(() => {
       tapped = null
@@ -63,11 +98,44 @@ $('.timeblock').on('touchstart', e => {
   }
 })
 
-$('.timeblock').on('touchend', e => {
-  doubleTapped = false
+$('.mainPage .timeblock').on('touchend', e => {
+  if (doubleTapped) {
+    doubleTapped = false
+    const calendar = []
+    let date
+    let temp = null
+    let timeblocks = $('.timeblock')
+    let c = 3
+
+    for (let i = 0; i < timeblocks.length - 1; ++i) {
+      c = color2num(timeblocks[i].style.backgroundColor)
+      if (c < 3) {
+        if (temp == null) {
+          temp = [timeblocks[i].id, timeblocks[i].id, c]
+        } else {
+          if (c === temp[2]) {
+            temp[1] = timeblocks[i].id
+          } else {
+            calendar.push(temp)
+            temp = [timeblocks[i].id, timeblocks[i].id, c]
+          }
+        }
+      } else if (temp != null) {
+        calendar.push(temp)
+        temp = null
+      }
+    }
+
+    store.dispatch({
+      type: 'calendar',
+      subtype: 'update',
+      payload: calendar
+    })
+
+  }
 })
 
-$('.timeblock').on('touchmove', e => {
+$('.mainPage .timeblock').on('touchmove', e => {
   if (doubleTapped) {
     const touch = e.originalEvent.touches[0]
     $('.timeblock').each((index, element) => {

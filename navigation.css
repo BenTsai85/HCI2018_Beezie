@@ -9,7 +9,6 @@
 
 .navitem {
   width: 15pt;
-  backface-visibility: hidden;
 }
 
 .toggle, .page, .navitem.calendar {

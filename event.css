@@ -79,8 +79,10 @@
 }
 
 .eventadd {
-  width: 20pt;
+  width: 25pt;
   position: absolute;
-  bottom: 10pt;
-  right: 10pt;
+  bottom: 15pt;
+  right: 15pt;
+  background-color: white;
+  border-radius: 12.5pt;
 }
