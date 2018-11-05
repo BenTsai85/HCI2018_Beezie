@@ -1,7 +1,11 @@
+.eventDetail {
+  position: relative;
+}
+
 .backbutton {
-  width: 15pt;
   position: absolute;
   margin: 5pt;
+  width: 15pt;
 }
 
 .EDheader {
@@ -107,7 +111,7 @@
 }
 
 .eventDetail .month {
-  position: absolute;
+  float: left;
 }
 
 .eventDetail .timeblock.blockend {

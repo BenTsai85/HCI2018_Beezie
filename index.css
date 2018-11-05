@@ -1,9 +1,6 @@
-html {
+html, body {
   height: 100%;
-}
-
-body {
-  height: 100%;
+  overflow: hidden;
 }
 
 .mainPage {
@@ -15,6 +12,7 @@ body {
 .subPage {
   height: 100%;
   display: none;
+  overflow-y: scroll;
 }
 
 .page {
