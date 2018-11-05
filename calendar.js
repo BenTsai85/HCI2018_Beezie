@@ -13,6 +13,9 @@ const timeadd15 = time => {
 }
 
 const color2num = color => {
+  if (color === '') {
+    return 3
+  }
   return Number(color.slice(4, color.indexOf(','))) / 85
 }
 
@@ -104,8 +107,8 @@ $('.mainPage .timeblock').on('touchend', e => {
     const calendar = []
     let date
     let temp = null
-    let timeblocks = $('.timeblock')
-    let c = 3
+    let timeblocks = $('.mainPage .timeblock')
+    let c
 
     for (let i = 0; i < timeblocks.length - 1; ++i) {
       c = color2num(timeblocks[i].style.backgroundColor)

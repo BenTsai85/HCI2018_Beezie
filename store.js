@@ -18,7 +18,7 @@ const initialState = {
   events,
   account,
   accounts,
-  event: null
+  event: events[0]
 }
 
 const reducer = (state = initialState, action) => {
