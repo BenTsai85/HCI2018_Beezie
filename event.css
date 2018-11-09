@@ -42,7 +42,6 @@
   border-color: lightgray;
   border-width: 1pt;
   border-radius: 10pt;
-  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(100, 100, 100, 1)), url('image/DIY.jpg');
   background-size: 140pt 80pt;
 }
 

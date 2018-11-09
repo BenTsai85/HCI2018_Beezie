@@ -1,12 +1,3 @@
-const account = mockup.accounts.find(a => a.name === "Sam")
-const events = []
-for (let i = 0, j = 0; i < mockup.events.length, j < account.events.length; ++i) {
-  if (mockup.events[i].id === account.events[j]) {
-    events.push(mockup.events[i])
-    ++j
-  }
-}
-
 const initialState = {
   calendar: {
     button: 'unavailable',
@@ -14,10 +5,11 @@ const initialState = {
     dbltap: false,
   },
   nav: 'calendar',
-  events,
-  account,
+  subnav: 'eventdetail',
+  events: mockup.events,
+  account: mockup.accounts.find(a => a.id === 0),
   accounts: mockup.accounts,
-  event: events[0]
+  event: mockup.events[0]
 }
 
 const reducer = (state = initialState, action) => {
@@ -36,12 +28,30 @@ const reducer = (state = initialState, action) => {
       break
     case 'nav':
       return { ...state, nav: action.payload }
+    case 'subnav':
+      return { ...state, subnav: action.payload }
     case 'init':
       return state
     case 'event':
       switch (action.subtype) {
         case 'set':
           return { ...state, event: action.payload }
+        case 'create':
+          const newEvent = { ...state.event, id: state.events.length, participants: [{ id: 0, name: "Sam", willingness: null }], host: 0 }
+          state.events.push(newEvent)
+          state.account.events.push(newEvent.id)
+          window.localStorage.setItem('Beezie', JSON.stringify(mockup))
+          return { ...state, event: newEvent }
+        case 'name':
+          return { ...state, event: { ...state.event, name: action.payload } }
+        case 'detail':
+          return { ...state, event: { ...state.event, detail: action.payload } }
+        case 'location':
+          return { ...state, event: { ...state.event, location: action.payload } }
+        case 'image':
+          return { ...state, event: { ...state.event, image: action.payload } }
+        case 'time':
+          return { ...state, event: { ...state.event, time: action.payload } }
       }
       break
     case 'willingness':

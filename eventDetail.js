@@ -1,21 +1,21 @@
 store.subscribe(() => {
   const state = store.getState()
   const event = state.event
-  const participants = event.participants.map(p => state.accounts.find(a => a.id === p[0])).filter(p => p.name !== 'Sam')
+  const participants = event.participants.filter(p => p.id !== 0).map(p => state.accounts.find(a => a.id === p.id))
   participants.push(state.account)
-  const going = event.participants.reduce((sum, element) => sum + (element[1] === 0), 0)
-  const maybe = event.participants.reduce((sum, element) => sum + (element[1] === 1), 0)
-  const willingness = event.participants.find(p => p[0] === 0)[1]
+  const going = event.participants.reduce((sum, element) => sum + (element.willingness === 0), 0)
+  const maybe = event.participants.reduce((sum, element) => sum + (element.willingness === 1), 0)
+  const willingness = event.participants.find(p => p.id === 0).willingness
 
-  $('.EDheader').css({ backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0), rgba(100, 100, 100, 1)), url("image/' + event.name + '.jpg")' })
+  $('.EDheader').css({ backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0), rgba(100, 100, 100, 0.7)), url("' + (event.image ? event.image : 'image/DIY.jpg') + '")' })
   $('.EDname').html(event.name)
   $('.EDparticipantname').html(
     participants.length === 1 ? 'You' :
     participants.length === 2 ? participants[0].name + ' and You' :
-    participants[0].name + ', ' + participants[1].name + ', and ' + (participants.length - 1) + ' people'
+    participants[0].name + ', ' + participants[1].name + ', and ' + (participants.length - 2) + ' people'
   )
   $('.EDparticipantwillingness').html(going + ' going and ' + maybe + ' maybe')
-  $('.EDtimeinfo').html(event.time[0].toLocaleDateString('en-US', { weekday: 'short', day: 'numeric', month: 'short' }) + ' at ' + event.time[0].toLocaleString('en-US', { hour: '2-digit', minute: '2-digit' }))
+  $('.EDtimeinfo').html(event.time ? event.time[0].toLocaleDateString('en-US', { weekday: 'short', day: 'numeric', month: 'short' }) + ' at ' + event.time[0].toLocaleString('en-US', { hour: '2-digit', minute: '2-digit' }) : 'TBD')
   $('.EDlocationinfo').html(event.location)
   $('.EDdetailinfo').html(event.detail)
 

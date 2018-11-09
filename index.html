@@ -4,25 +4,48 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="createEvent.css">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="navigation.css">
     <link rel="stylesheet" href="calendar.css">
     <link rel="stylesheet" href="event.css">
     <link rel="stylesheet" href="eventDetail.css">
+    <link rel="stylesheet" href="friend.css">
+    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="profile.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.5.2/redux.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <title>Beezie</title>
   </head>
   <body>
+    <div class="popupPage">
+      <div class="popupBox">
+        <div class="popupTitle">Welcome to Beezie!</div>
+        <div>
+          1. Select an availability status
+        </div>
+        <div>
+          2. Double click on the calendar
+        </div>
+        <div>
+          3. Drag through the slots that you will be in that status
+        </div>
+      </div>
+    </div>
     <div class="mainPage">
       <div class="navbar">
         <img class="navitem calendar" src="image/calendar.svg" />
         <img class="navitem toggle calendar" src="image/calendar.toggled.svg" />
         <img class="navitem event" src="image/event.svg" />
         <img class="navitem toggle event" src="image/event.toggled.svg" />
-        <img class="navitem group" src="image/group.svg" />
-        <img class="navitem toggle group" src="image/group.toggled.svg" />
+        <img class="navitem friend" src="image/friend.svg" />
+        <img class="navitem toggle friend" src="image/friend.toggled.svg" />
         <img class="navitem profile" src="image/profile.svg" />
         <img class="navitem toggle profile" src="image/profile.toggled.svg" />
       </div>
@@ -1165,11 +1188,34 @@
           </div>
         </div>
       </div>
+      <div class="page friend">
+
+        <div class="search">
+          <input type="text" class="friendListSearch" placeholder="Search Friends" title="Type in a name">
+        </div>
+    
+        <div class="friends" style="overflow-x:auto;">
+          <table class="friendListTable">
+          </table>
+        </div>
+      </div>
+      
+      <div class="page profile">
+        <img data-src="holder.js/200x200" class= "img-circle" alt="200x200" src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX14845052.jpg" data-holder-rendered="true" style="width: 200px; height: 200px;" />
+        <p><strong>Name: </strong> OD Orafidiya </p>
+        <p><strong>Email: </strong> oorafidi@ucsd.edu</p>
+        <p><strong>Age: </strong> 20</p>
+        <p><strong>Location: </strong> La Jolla San Diego (UCSD)</p>
+        <a href="login.html">
+          <button type="button" class="btn btn-primary">Sign Out</button>
+        </a>
+      </div>
+          
     </div>
 
     <div class="subPage">
+      <img class="backbutton" src="image/back.svg" />
       <div class="eventDetail">
-        <img class="backbutton" src="image/back.svg" />
         <div class="EDheader">
           <div class="EDname"></div>
         </div>
@@ -1196,7 +1242,7 @@
         </div>
         <div class="EDinfo">
           <div class="EDparticipant">
-            <img class="EDparticipantimg" src="image/group.toggled.svg" />
+            <img class="EDparticipantimg" src="image/friend.toggled.svg" />
             <div class="EDparticipantinfo">
               <div class="EDparticipantname"></div>
               <div class="EDparticipantwillingness"></div>
@@ -2291,6 +2337,62 @@
           </div>
         </div>
       </div>
+      <div class="createEvent">
+        <label class="createEventImage">
+          <input type="file" class="createEventImageFile" />
+          <img />
+          <div></div>
+          <input type="text" class="createEventName" placeholder="Event Name">
+        </label>
+        <div class="container">
+          
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label class="control-label col-sm-2" for="Details">
+                Event Details:</label>
+            </div>
+            <div class="col-sm-10">
+              <textarea class="form-control createEventDetail" aria-label="Event Details"></textarea>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label class="control-label col-sm-2"
+              for="location">Event Location:</label>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control createEventLocation" aria-label="location">
+            </div>
+          </div>
+
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label class="control-label col-sm-2">
+                  What times might work: </label>
+            </div>
+            <div class="col-sm-10">
+              <input style="width: 100%;color:DimGrey;" type="text" name="datetime1" class="form-control createEventTime" placeholder="No earlies than" />
+            </div>
+            <div class="col-sm-10">
+              <input style="width: 100%;color:DimGrey;" type="text" name="datetime2" class="form-control createEventTime" placeholder="No later than" />
+            </div>
+          </div>
+    
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label class="control-label col-sm-2">
+                  Or pick a specific time: </label>
+            </div>
+            <div class="col-sm-10">
+              <input style="width: 100%;color:DimGrey;" type="text" name="datetime3" class="form-control createEventTime" placeholder="Pick Your Time" />
+            </div>
+          </div>
+      
+          <button class="btn btn-primary createEventSubmit">Submit</button>
+        </div>
+
+      </div>
     </div>
   </body>
   <script src="mockup.js"></script>
@@ -2299,4 +2401,7 @@
   <script src="navigation.js"></script>
   <script src="event.js"></script>
   <script src="eventDetail.js"></script>
+  <script src="createEvent.js"></script>
+  <script src="friend.js"></script>
+  <script src="popup.js"></script>
 </html>

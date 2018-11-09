@@ -13,6 +13,7 @@ html, body {
   height: 100%;
   display: none;
   overflow-y: scroll;
+  position: relative;
 }
 
 .page {
@@ -22,4 +23,11 @@ html, body {
 
 hr {
   margin: 0;
+}
+
+.backbutton {
+  position: absolute;
+  margin: 5pt;
+  width: 15pt;
+  z-index: 1;
 }

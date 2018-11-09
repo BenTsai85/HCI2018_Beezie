@@ -19,83 +19,223 @@ if (storage != null) {
     events: [{
       id: 0,
       name: "DIY",
-      period: new Date(2018, 10, 25),
+      period: [ new Date(2018, 10, 22), new Date(2018, 10, 28) ],
       time: [ new Date(2018, 10, 26, 15, 0), new Date(2018, 10, 26, 17, 0) ],
       location: "Price Center",
       detail: "Let's DIY at PC!",
-      participants: [ [ 1, null ], [ 0, 0 ], [ 2, 1 ] ],
+      participants: [ {
+        id: 1,
+        name: "Alex",
+        willingness: null
+      }, {
+        id: 0,
+        name: "Sam",
+        willingness: 0
+      }, {
+        id: 2,
+        name: "Christine",
+        willingness: 2
+      }, {
+        id: 3,
+        name: "Triton A",
+        willingness: 1
+      }, {
+        id: 4,
+        name: "Triton B",
+        willingness: 2
+      } ],
       host: 0
     }, {
       id: 1,
       name: "DIY",
-      period: new Date(2018, 10, 25),
+      period: [ new Date(2018, 10, 22), new Date(2018, 10, 28) ],
       time: [ new Date(2018, 10, 26, 15, 0), new Date(2018, 10, 26, 17, 0) ],
       location: "Price Center",
       detail: "Let's DIY at PC!",
-      participants: [ [ 1, null ], [ 0, 0 ], [ 2, 1 ] ],
+      participants: [ {
+        id: 1,
+        name: "Alex",
+        willingness: null
+      }, {
+        id: 0,
+        name: "Sam",
+        willingness: 0
+      }, {
+        id: 2,
+        name: "Christine",
+        willingness: 2
+      }, {
+        id: 3,
+        name: "Triton A",
+        willingness: 1
+      }, {
+        id: 4,
+        name: "Triton B",
+        willingness: 2
+      } ],
       host: 0
     }, {
       id: 2,
       name: "DIY",
-      period: new Date(2018, 10, 25),
+      period: [ new Date(2018, 10, 22), new Date(2018, 10, 28) ],
       time: [ new Date(2018, 10, 26, 15, 0), new Date(2018, 10, 26, 17, 0) ],
       location: "Price Center",
       detail: "Let's DIY at PC!",
-      participants: [ [ 1, null ], [ 0, 0 ], [ 2, 1 ] ],
+      participants: [ {
+        id: 1,
+        name: "Alex",
+        willingness: null
+      }, {
+        id: 0,
+        name: "Sam",
+        willingness: 0
+      }, {
+        id: 2,
+        name: "Christine",
+        willingness: 2
+      }, {
+        id: 3,
+        name: "Triton A",
+        willingness: 1
+      }, {
+        id: 4,
+        name: "Triton B",
+        willingness: 2
+      } ],
       host: 0
     }, {
       id: 3,
       name: "DIY",
-      period: new Date(2018, 10, 25),
+      period: [ new Date(2018, 10, 22), new Date(2018, 10, 28) ],
       time: [ new Date(2018, 10, 26, 15, 0), new Date(2018, 10, 26, 17, 0) ],
       location: "Price Center",
       detail: "Let's DIY at PC!",
-      participants: [ [ 1, null ], [ 0, 0 ], [ 2, 1 ] ],
+      participants: [ {
+        id: 1,
+        name: "Alex",
+        willingness: null
+      }, {
+        id: 0,
+        name: "Sam",
+        willingness: 0
+      }, {
+        id: 2,
+        name: "Christine",
+        willingness: 1
+      }, {
+        id: 3,
+        name: "Triton A",
+        willingness: 2
+      }, {
+        id: 4,
+        name: "Triton B",
+        willingness: 0
+      } ],
       host: 1
     }, {
       id: 4,
       name: "DIY",
-      period: new Date(2018, 10, 25),
+      period: [ new Date(2018, 10, 22), new Date(2018, 10, 28) ],
       time: [ new Date(2018, 10, 26, 15, 0), new Date(2018, 10, 26, 17, 0) ],
       location: "Price Center",
       detail: "Let's DIY at PC!",
-      participants: [ [ 1, null ], [ 0, 0 ], [ 2, 1 ] ],
+      participants: [ {
+        id: 1,
+        name: "Alex",
+        willingness: null
+      }, {
+        id: 0,
+        name: "Sam",
+        willingness: 0
+      }, {
+        id: 2,
+        name: "Christine",
+        willingness: 1
+      } ],
       host: 1
     }, {
       id: 5,
       name: "DIY",
-      period: new Date(2018, 10, 25),
+      period: [ new Date(2018, 10, 22), new Date(2018, 10, 28) ],
       time: [ new Date(2018, 10, 26, 15, 0), new Date(2018, 10, 26, 17, 0) ],
       location: "Price Center",
       detail: "Let's DIY at PC!",
-      participants: [ [ 1, null ], [ 0, 0 ], [ 2, 1 ] ],
+      participants: [ {
+        id: 1,
+        name: "Alex",
+        willingness: null
+      }, {
+        id: 0,
+        name: "Sam",
+        willingness: 0
+      }, {
+        id: 2,
+        name: "Christine",
+        willingness: 1
+      } ],
       host: 1
     }, {
       id: 6,
       name: "DIY",
-      period: new Date(2018, 10, 25),
+      period: [ new Date(2018, 10, 22), new Date(2018, 10, 28) ],
       time: [ new Date(2018, 10, 26, 15, 0), new Date(2018, 10, 26, 17, 0) ],
       location: "Price Center",
       detail: "Let's DIY at PC!",
-      participants: [ [ 1, null ], [ 0, null ], [ 2, 1 ] ],
+      participants: [ {
+        id: 1,
+        name: "Alex",
+        willingness: null
+      }, {
+        id: 0,
+        name: "Sam",
+        willingness: null
+      }, {
+        id: 2,
+        name: "Christine",
+        willingness: 1
+      } ],
       host: 2
     }, {
       id: 7,
       name: "DIY",
-      period: new Date(2018, 10, 25),
+      period: [ new Date(2018, 10, 22), new Date(2018, 10, 28) ],
       time: [ new Date(2018, 10, 26, 15, 0), new Date(2018, 10, 26, 17, 0) ],
       location: "Price Center",
       detail: "Let's DIY at PC!",
-      participants: [ [ 1, null ], [ 0, 1 ], [ 2, 1 ] ],
+      participants: [ {
+        id: 1,
+        name: "Alex",
+        willingness: null
+      }, {
+        id: 0,
+        name: "Sam",
+        willingness: 1
+      }, {
+        id: 2,
+        name: "Christine",
+        willingness: 1
+      } ],
       host: 2
     }, {
       id: 8,
       name: "DIY",
-      period: new Date(2018, 10, 25),
+      period: [ new Date(2018, 10, 22), new Date(2018, 10, 28) ],
       time: [ new Date(2018, 10, 26, 15, 0), new Date(2018, 10, 26, 17, 0) ],
       location: "Price Center",
       detail: "Let's DIY at PC!",
-      participants: [ [ 1, null ], [ 0, 2 ], [ 2, 1 ] ],
+      participants: [ {
+        id: 1,
+        name: "Alex",
+        willingness: null
+      }, {
+        id: 0,
+        name: "Sam",
+        willingness: 2
+      }, {
+        id: 2,
+        name: "Christine",
+        willingness: 1
+      } ],
       host: 2
     }, {
       id: 9,
@@ -104,7 +244,19 @@ if (storage != null) {
       time: [ new Date(2018, 10, 20, 15, 0), new Date(2018, 10, 20, 17, 0) ],
       location: "Price Center",
       detail: "Let's DIY at PC!",
-      participants: [ [ 1, null ], [ 0, 0 ], [ 2, 1 ] ],
+      participants: [ {
+        id: 1,
+        name: "Alex",
+        willingness: null
+      }, {
+        id: 0,
+        name: "Sam",
+        willingness: 0
+      }, {
+        id: 2,
+        name: "Christine",
+        willingness: 1
+      } ],
       host: 0
     }, {
       id: 10,
@@ -113,7 +265,19 @@ if (storage != null) {
       time: [ new Date(2018, 10, 20, 15, 0), new Date(2018, 10, 20, 17, 0) ],
       location: "Price Center",
       detail: "Let's DIY at PC!",
-      participants: [ [ 1, null ], [ 0, 0 ], [ 2, 1 ] ],
+      participants: [ {
+        id: 1,
+        name: "Alex",
+        willingness: null
+      }, {
+        id: 0,
+        name: "Sam",
+        willingness: 0
+      }, {
+        id: 2,
+        name: "Christine",
+        willingness: 1
+      } ],
       host: 0
     }, {
       id: 11,
@@ -122,7 +286,19 @@ if (storage != null) {
       time: [ new Date(2018, 10, 20, 15, 0), new Date(2018, 10, 20, 17, 0) ],
       location: "Price Center",
       detail: "Let's DIY at PC!",
-      participants: [ [ 1, null ], [ 0, 0 ], [ 2, 1 ] ],
+      participants: [ {
+        id: 1,
+        name: "Alex",
+        willingness: null
+      }, {
+        id: 0,
+        name: "Sam",
+        willingness: 0
+      }, {
+        id: 2,
+        name: "Christine",
+        willingness: 1
+      } ],
       host: 0
     }],
     accounts: [{
@@ -139,17 +315,104 @@ if (storage != null) {
         [ "201810251400", "201810251645", 2 ],
         [ "201810270800", "201810271745", 0 ]
       ],
-      events: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+      events: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ],
+      friends: [ 1, 2, 3 ]
     }, {
       id: 1,
       name: "Alex",
-      calendar: [],
-      events: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+      calendar: [
+        [ "201810221100", "201810221345", 1 ],
+        [ "201810221730", "201810221950", 1 ],
+        [ "201810230800", "201810231145", 0 ],
+        [ "201810231200", "201810231315", 1 ],
+        [ "201810241200", "201810241545", 2 ],
+        [ "201810241600", "201810241745", 1 ],
+        [ "201810251100", "201810251215", 2 ],
+        [ "201810251230", "201810251345", 0 ],
+        [ "201810251400", "201810251645", 1 ],
+        [ "201810270800", "201810271745", 1 ]
+      ],
+      events: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      friends: [ 0, 2, 3 ]
     }, {
       id: 2,
       name: "Christine",
-      calendar: [],
-      events: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+      calendar: [
+        [ "201810220800", "201810220945", 1 ],
+        [ "201810221730", "201810221950", 1 ],
+        [ "201810230800", "201810231145", 0 ],
+        [ "201810231200", "201810231315", 1 ],
+        [ "201810241200", "201810241545", 2 ],
+        [ "201810241600", "201810241745", 1 ],
+        [ "201810251100", "201810251215", 2 ],
+        [ "201810251230", "201810251345", 0 ],
+        [ "201810251400", "201810251645", 1 ],
+        [ "201810270800", "201810271745", 1 ],
+      ],
+      events: [ 0, 1, 2, 3 ],
+      friends: [ 0, 1 ]
+    }, {
+      id: 3,
+      name: "Ben",
+      calendar: [
+        [ "201810220800", "201810220945", 1 ],
+        [ "201810221730", "201810221950", 1 ],
+        [ "201810230800", "201810231145", 0 ],
+        [ "201810231200", "201810231315", 1 ],
+        [ "201810241200", "201810241545", 2 ],
+        [ "201810241600", "201810241745", 1 ],
+        [ "201810251100", "201810251215", 2 ],
+        [ "201810251230", "201810251345", 0 ],
+        [ "201810251600", "201810251745", 1 ],
+        [ "201810270800", "201810271745", 1 ],
+      ],
+      events: [ 0, 1, 2, 3 ],
+      friends: [ 0, 1, 2 ]
+    },{
+      id: 4,
+      name: "Triton A",
+      calendar: [
+        [ "201810220900", "201810221245", 2 ],
+        [ "201810230800", "201810231145", 0 ],
+        [ "201810231300", "201810231645", 2 ],
+        [ "201810231800", "201810232115", 1 ],
+        [ "201810251100", "201810251215", 2 ],
+        [ "201810251230", "201810251345", 0 ],
+        [ "201810251600", "201810251745", 1 ],
+        [ "201810270800", "201810271745", 1 ],
+      ],
+      events: [ 1, 2, 3 ],
+      friends: [ 1, 2 ]
+    },{
+      id: 5,
+      name: "Triton B",
+      calendar: [
+        [ "201810220900", "201810221245", 2 ],
+        [ "201810230800", "201810231145", 0 ],
+        [ "201810231300", "201810231645", 2 ],
+        [ "201810231800", "201810232115", 1 ],
+        [ "201810251100", "201810251215", 2 ],
+        [ "201810251230", "201810251345", 0 ],
+        [ "201810251600", "201810251745", 1 ],
+        [ "201810270800", "201810271745", 1 ],
+      ],
+      events: [],
+      friends: [ 1, 2, 5 ]
+    },{
+      id: 6,
+      name: "Triton C",
+      calendar: [
+        [ "201810220900", "201810221245", 2 ],
+        [ "201810230800", "201810231145", 0 ],
+        [ "201810231300", "201810231645", 2 ],
+        [ "201810231800", "201810232115", 1 ],
+        [ "201810251100", "201810251215", 2 ],
+        [ "201810251230", "201810251345", 0 ],
+        [ "201810251600", "201810251745", 1 ],
+        [ "201810270800", "201810271745", 1 ],
+      ],
+      events: [ 1, 2, 3 ],
+      friends: [ 4 ]
     }]
   }
 }

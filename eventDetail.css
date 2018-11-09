@@ -2,12 +2,6 @@
   position: relative;
 }
 
-.backbutton {
-  position: absolute;
-  margin: 5pt;
-  width: 15pt;
-}
-
 .EDheader {
   width: 100%;
   height: 130pt;
@@ -67,7 +61,7 @@
 .EDinfo img {
   width: 13pt;
   height: 13pt;
-  margin-left: 5pt;
+  margin-left: 10pt;
   margin-right: 5pt;
 }
 
