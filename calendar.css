@@ -105,18 +105,18 @@
 
 .timetitle {
   width: 15%;
-  height: 960pt;
+  height: 720pt;
   display: flex;
   flex-direction: column;
 }
 
 .timetitlesection {
-  height: 40pt;
+  height: 30pt;
   font-family: sans-serif;
   font-size: 8pt;
   color: gray;
   position: relative;
-  top: 34pt;
+  top: 24pt;
   left: calc(100% - 25pt);
 }
 
@@ -130,14 +130,14 @@
 .timeday {
   flex-grow: 1;
   width: 100%;
-  height: 960pt;
+  height: 720pt;
   display: flex;
   flex-direction: column;
 }
 
 .timesection {
   width: 100%;
-  height: 40pt;
+  height: 30pt;
   display: flex;
   flex-direction: column;
   border-left-style: solid;
@@ -148,7 +148,7 @@
 }
 
 .timeblock {
-  height: 10pt;
+  height: 15pt;
   width: 100%;
   border-bottom-style: dotted;
   border-bottom-color: #eeeeee;
@@ -158,4 +158,13 @@
 
 .timeblock.blockend {
   border-bottom-style: none;
+}
+
+.calendaradd {
+  width: 25pt;
+  position: absolute;
+  bottom: 15pt;
+  right: 15pt;
+  background-color: white;
+  border-radius: 12.5pt;
 }

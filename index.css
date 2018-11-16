@@ -29,5 +29,15 @@ hr {
   position: absolute;
   margin: 5pt;
   width: 15pt;
+  z-index: 2;
+}
+
+.helpMark {
+  width: 25pt;
+  position: absolute;
+  bottom: 15pt;
+  left: 15pt;
+  background-color: white;
+  border-radius: 12.5pt;
   z-index: 1;
 }

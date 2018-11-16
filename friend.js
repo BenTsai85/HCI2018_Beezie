@@ -1,8 +1,8 @@
 store.subscribe(() => {
   const state = store.getState()
   const { account, accounts } = state
-  const friends = accounts.filter(a => a.id != account.id && account.friends.includes(a.id)).map(a => a.name)
-  const strangers = accounts.filter(a => a.id != account.id && !account.friends.includes(a.id)).map(a => a.name)
+  const friends = accounts.filter(a => a.id != account.id && account.friends.includes(a.id))
+  const strangers = accounts.filter(a => a.id != account.id && !account.friends.includes(a.id))
   $('.friendListTable').html(friends.map(f => ' \
     <tr> \
       <td> \
@@ -10,11 +10,11 @@ store.subscribe(() => {
             class="img-circle" width="60px"> \
       </td> \
       <td> \
-        <a href="#">' + f + '</a> \
+        <a href="#">' + f.name + '</a> \
         <p>Free</p> \
       </td> \
       <td> \
-        <a href="#"><img src="image/chat.png"></a> \
+        <a href="#"><img src=""></a> \
       </td> \
     </tr> \
   ') + strangers.map(s => ' \
@@ -24,14 +24,22 @@ store.subscribe(() => {
             class="img-circle" width="60px"> \
       </td> \
       <td> \
-        <a href="#">' + s + '</a> \
+        <a href="#">' + s.name + '</a> \
         <p>Free</p> \
       </td> \
       <td> \
-        <a href="#"><img src="image/user.png"></a> \
+        <a href="#"><img class="stranger" src="image/user.png" uid=' + s.id +'></a> \
       </td> \
     </tr> \
   '))
+
+  $('.stranger').click(e => {
+    store.dispatch({
+      type: 'friend',
+      subtype: 'add',
+      payload: Number(e.currentTarget.attributes.uid.value)
+    })
+  })
 })
 
 $('.friendListSearch').keyup(e => {

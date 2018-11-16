@@ -1,8 +1,8 @@
 store.subscribe(() => {
   const state = store.getState()
   const event = state.event
-  const participants = event.participants.filter(p => p.id !== 0).map(p => state.accounts.find(a => a.id === p.id))
-  participants.push(state.account)
+  const participants = event.participants.filter(p => p.id !== 0).map(p => ({ ...state.accounts.find(a => a.id === p.id), show: p.show }))
+  participants.push({ ...state.account, show: event.participants.find(p => p.id === 0).show })
   const going = event.participants.reduce((sum, element) => sum + (element.willingness === 0), 0)
   const maybe = event.participants.reduce((sum, element) => sum + (element.willingness === 1), 0)
   const willingness = event.participants.find(p => p.id === 0).willingness
@@ -25,17 +25,21 @@ store.subscribe(() => {
     borderBottomStyle: 'dotted'
   })
 
+  $('.showCalendarOptionToggle input')[0].checked = participants[participants.length - 1].show
+
   for (let p of participants) {
-    for (let temp of p.calendar) {
-      for (let time = temp[0]; time <= temp[1]; time = timeadd15(time)) {
-        const that = $('#ED' + time)
-        let c = color2num(that.css('background-color'))
-        c = num2color(c - (3 - temp[2]) / participants.length)
-        that.css({
-          backgroundColor: c,
-          borderBottomColor: c,
-          borderBottomStyle: 'solid'
-        })
+    if (p.show) {
+      for (let temp of p.calendar) {
+        for (let time = temp[0]; time <= temp[1]; time = timeadd30(time)) {
+          const that = $('#ED' + time)
+          let c = color2num(that.css('background-color'))
+          c = num2color(c - (3 - temp[2]) / participants.filter(p => p.show).length)
+          that.css({
+            backgroundColor: c,
+            borderBottomColor: c,
+            borderBottomStyle: 'solid'
+          })
+        }
       }
     }
   }
@@ -58,14 +62,9 @@ store.subscribe(() => {
   }
   if (event.host !== 0) {
     $('.EDedit').hide()
+  } else {
+    $('.EDedit').show()
   }
-})
-
-$('.backbutton').click(() => {
-  store.dispatch({
-    type: 'nav',
-    payload: 'event'
-  })
 })
 
 $('.EDgoing').click(() => {
@@ -86,5 +85,30 @@ $('.EDno').click(() => {
   store.dispatch({
     type: 'willingness',
     payload: 2
+  })
+})
+
+$('.EDedit').click(() => {
+  store.dispatch({
+    type: 'subnav',
+    payload: 'editEvent'
+  })
+  store.dispatch({
+    type: 'event',
+    subtype: 'copy'
+  })
+})
+
+$('.EDguest').click(() => {
+  store.dispatch({
+    type: 'subnav',
+    payload: 'guest'
+  })
+})
+
+$('.showCalendarOptionToggle input').change(e => {
+  store.dispatch({
+    type: 'showCalendar',
+    payload: e.currentTarget.checked
   })
 })

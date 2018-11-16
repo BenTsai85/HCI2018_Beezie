@@ -52,7 +52,7 @@ store.subscribe(() => {
         <div class="eventpeople"> \
           ' + (e.participants.length === 1 ? 'You' :
           e.participants.length === 2 ? e.participants[0].name + ' and You' :
-          e.participants[0].name + ', ' + e.participants[1].name + ', and ' + (e.participants.length - 1) + ' people') + ' \
+          e.participants[0].name + ', ' + e.participants[1].name + ', and ' + (e.participants.length - 2) + ' people') + ' \
         </div> \
       </div> \
     </div>'
@@ -71,7 +71,7 @@ store.subscribe(() => {
         <div class="eventpeople"> \
           ' + (e.participants.length === 1 ? 'You' :
           e.participants.length === 2 ? e.participants[0].name + ' and You' :
-          e.participants[0].name + ', ' + e.participants[1].name + ', and ' + (e.participants.length - 1) + ' people') + ' \
+          e.participants[0].name + ', ' + e.participants[1].name + ', and ' + (e.participants.length - 2) + ' people') + ' \
         </div> \
       </div> \
     </div>'
@@ -90,7 +90,7 @@ store.subscribe(() => {
         <div class="eventpeople"> \
         ' + (e.participants.length === 1 ? 'You' :
         e.participants.length === 2 ? e.participants[0].name + ' and You' :
-        e.participants[0].name + ', ' + e.participants[1].name + ', and ' + (e.participants.length - 1) + ' people') + ' \
+        e.participants[0].name + ', ' + e.participants[1].name + ', and ' + (e.participants.length - 2) + ' people') + ' \
         </div> \
       </div> \
     </div>'
@@ -100,11 +100,11 @@ store.subscribe(() => {
     store.dispatch({
       type: 'event',
       subtype: 'set',
-      payload: events.find(event => event.id === Number(e.currentTarget.id.slice(5)))
+      payload: store.getState().events.find(event => event.id === Number(e.currentTarget.id.slice(5)))
     })
     store.dispatch({
-      type: 'nav',
-      payload: 'hide'
+      type: 'mainPageHide',
+      payload: true
     })
     store.dispatch({
       type: 'subnav',
@@ -115,8 +115,8 @@ store.subscribe(() => {
 
 $('.eventadd').click(() => {
   store.dispatch({
-    type: 'nav',
-    payload: 'hide'
+    type: 'mainPageHide',
+    payload: true
   })
   store.dispatch({
     type: 'subnav',
@@ -132,8 +132,4 @@ $('.eventadd').click(() => {
       }]
     }
   })
-
-  $('input[name="datetime1"]')[0].value = ""
-  $('input[name="datetime2"]')[0].value = ""
-  $('input[name="datetime3"]')[0].value = ""
 })

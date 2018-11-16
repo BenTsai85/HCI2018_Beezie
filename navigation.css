@@ -11,10 +11,10 @@
   width: 15pt;
 }
 
-.toggle, .page, .navitem.calendar {
+.toggled, .page, .navitem.calendar {
   display: none;
 }
 
-.calendar.toggle, .calendar.page {
+.calendar.toggled, .calendar.page {
   display: inline;
 }

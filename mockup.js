@@ -26,23 +26,28 @@ if (storage != null) {
       participants: [ {
         id: 1,
         name: "Alex",
-        willingness: null
+        willingness: null,
+        show: true
       }, {
         id: 0,
         name: "Sam",
-        willingness: 0
+        willingness: 0,
+        show: true
       }, {
         id: 2,
         name: "Christine",
-        willingness: 2
+        willingness: 2,
+        show: true
       }, {
         id: 3,
-        name: "Triton A",
-        willingness: 1
+        name: "Ben",
+        willingness: 1,
+        show: true
       }, {
         id: 4,
-        name: "Triton B",
-        willingness: 2
+        name: "Triton A",
+        willingness: 2,
+        show: true
       } ],
       host: 0
     }, {
@@ -55,23 +60,28 @@ if (storage != null) {
       participants: [ {
         id: 1,
         name: "Alex",
-        willingness: null
+        willingness: null,
+        show: true
       }, {
         id: 0,
         name: "Sam",
-        willingness: 0
+        willingness: 0,
+        show: true
       }, {
         id: 2,
         name: "Christine",
-        willingness: 2
+        willingness: 2,
+        show: true
       }, {
         id: 3,
-        name: "Triton A",
-        willingness: 1
+        name: "Ben",
+        willingness: 1,
+        show: true
       }, {
         id: 4,
-        name: "Triton B",
-        willingness: 2
+        name: "Triton A",
+        willingness: 2,
+        show: true
       } ],
       host: 0
     }, {
@@ -84,23 +94,28 @@ if (storage != null) {
       participants: [ {
         id: 1,
         name: "Alex",
-        willingness: null
+        willingness: null,
+        show: true
       }, {
         id: 0,
         name: "Sam",
-        willingness: 0
+        willingness: 0,
+        show: true
       }, {
         id: 2,
         name: "Christine",
-        willingness: 2
+        willingness: 2,
+        show: true
       }, {
         id: 3,
-        name: "Triton A",
-        willingness: 1
+        name: "Ben",
+        willingness: 1,
+        show: true
       }, {
         id: 4,
-        name: "Triton B",
-        willingness: 2
+        name: "Triton A",
+        willingness: 2,
+        show: true
       } ],
       host: 0
     }, {
@@ -113,23 +128,28 @@ if (storage != null) {
       participants: [ {
         id: 1,
         name: "Alex",
-        willingness: null
+        willingness: null,
+        show: true
       }, {
         id: 0,
         name: "Sam",
-        willingness: 0
+        willingness: 0,
+        show: true
       }, {
         id: 2,
         name: "Christine",
-        willingness: 1
+        willingness: 2,
+        show: true
       }, {
         id: 3,
-        name: "Triton A",
-        willingness: 2
+        name: "Ben",
+        willingness: 1,
+        show: true
       }, {
         id: 4,
-        name: "Triton B",
-        willingness: 0
+        name: "Triton A",
+        willingness: 2,
+        show: true
       } ],
       host: 1
     }, {
@@ -142,15 +162,18 @@ if (storage != null) {
       participants: [ {
         id: 1,
         name: "Alex",
-        willingness: null
+        willingness: null,
+        show: true
       }, {
         id: 0,
         name: "Sam",
-        willingness: 0
+        willingness: 0,
+        show: true
       }, {
         id: 2,
         name: "Christine",
-        willingness: 1
+        willingness: 1,
+        show: true
       } ],
       host: 1
     }, {
@@ -163,15 +186,18 @@ if (storage != null) {
       participants: [ {
         id: 1,
         name: "Alex",
-        willingness: null
+        willingness: null,
+        show: true
       }, {
         id: 0,
         name: "Sam",
-        willingness: 0
+        willingness: 0,
+        show: true
       }, {
         id: 2,
         name: "Christine",
-        willingness: 1
+        willingness: 1,
+        show: true
       } ],
       host: 1
     }, {
@@ -184,15 +210,18 @@ if (storage != null) {
       participants: [ {
         id: 1,
         name: "Alex",
-        willingness: null
+        willingness: null,
+        show: true
       }, {
         id: 0,
         name: "Sam",
-        willingness: null
+        willingness: null,
+        show: true
       }, {
         id: 2,
         name: "Christine",
-        willingness: 1
+        willingness: 1,
+        show: true
       } ],
       host: 2
     }, {
@@ -205,15 +234,18 @@ if (storage != null) {
       participants: [ {
         id: 1,
         name: "Alex",
-        willingness: null
+        willingness: null,
+        show: true
       }, {
         id: 0,
         name: "Sam",
-        willingness: 1
+        willingness: 1,
+        show: true
       }, {
         id: 2,
         name: "Christine",
-        willingness: 1
+        willingness: 1,
+        show: true
       } ],
       host: 2
     }, {
@@ -226,78 +258,90 @@ if (storage != null) {
       participants: [ {
         id: 1,
         name: "Alex",
-        willingness: null
+        willingness: null,
+        show: true
       }, {
         id: 0,
         name: "Sam",
-        willingness: 2
+        willingness: 2,
+        show: true
       }, {
         id: 2,
         name: "Christine",
-        willingness: 1
+        willingness: 1,
+        show: true
       } ],
       host: 2
     }, {
       id: 9,
       name: "DIY",
-      period: new Date(2018, 10, 20),
+      period: [ new Date(2018, 10, 22), new Date(2018, 10, 28) ],
       time: [ new Date(2018, 10, 20, 15, 0), new Date(2018, 10, 20, 17, 0) ],
       location: "Price Center",
       detail: "Let's DIY at PC!",
       participants: [ {
         id: 1,
         name: "Alex",
-        willingness: null
+        willingness: null,
+        show: true
       }, {
         id: 0,
         name: "Sam",
-        willingness: 0
+        willingness: 0,
+        show: true
       }, {
         id: 2,
         name: "Christine",
-        willingness: 1
+        willingness: 1,
+        show: true
       } ],
       host: 0
     }, {
       id: 10,
       name: "DIY",
-      period: new Date(2018, 10, 20),
+      period: [ new Date(2018, 10, 22), new Date(2018, 10, 28) ],
       time: [ new Date(2018, 10, 20, 15, 0), new Date(2018, 10, 20, 17, 0) ],
       location: "Price Center",
       detail: "Let's DIY at PC!",
       participants: [ {
         id: 1,
         name: "Alex",
-        willingness: null
+        willingness: null,
+        show: true
       }, {
         id: 0,
         name: "Sam",
-        willingness: 0
+        willingness: 0,
+        show: true
       }, {
         id: 2,
         name: "Christine",
-        willingness: 1
+        willingness: 1,
+        show: true
       } ],
       host: 0
     }, {
       id: 11,
       name: "DIY",
-      period: new Date(2018, 10, 20),
+      period: [ new Date(2018, 10, 22), new Date(2018, 10, 28) ],
       time: [ new Date(2018, 10, 20, 15, 0), new Date(2018, 10, 20, 17, 0) ],
       location: "Price Center",
       detail: "Let's DIY at PC!",
       participants: [ {
         id: 1,
         name: "Alex",
-        willingness: null
+        willingness: null,
+        show: true
       }, {
         id: 0,
         name: "Sam",
-        willingness: 0
+        willingness: 0,
+        show: true
       }, {
         id: 2,
         name: "Christine",
-        willingness: 1
+        willingness: 1,
+        show: true
       } ],
       host: 0
     }],

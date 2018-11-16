@@ -9,7 +9,9 @@ const initialState = {
   events: mockup.events,
   account: mockup.accounts.find(a => a.id === 0),
   accounts: mockup.accounts,
-  event: mockup.events[0]
+  event: mockup.events[0],
+  guestbar: 'guestList',
+  mainPageHide: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -23,7 +25,7 @@ const reducer = (state = initialState, action) => {
         case 'update':
           mockup.accounts = mockup.accounts.map(a => a.name === "Sam" ? { ...a, calendar: action.payload }: a )
           window.localStorage.setItem('Beezie', JSON.stringify(mockup))
-          return { ...state, account: { ...account, calendar: action.payload }, accounts: mockup.accounts }
+          return { ...state, account: { ...state.account, calendar: action.payload }, accounts: mockup.accounts }
       }
       break
     case 'nav':
@@ -52,13 +54,45 @@ const reducer = (state = initialState, action) => {
           return { ...state, event: { ...state.event, image: action.payload } }
         case 'time':
           return { ...state, event: { ...state.event, time: action.payload } }
+        case 'period':
+          return { ...state, event: { ...state.event, period: action.payload } }
+        case 'edit':
+          mockup.events[mockup.events.findIndex(e => e.id === state.event.id)] = state.event
+          window.localStorage.setItem('Beezie', JSON.stringify(mockup))
+          return state
+        case 'copy':
+          return { ...state, event: Object.assign({}, state.event) }
+        case 'reset':
+          return { ...state, event: state.events.find(e => e.id === state.event.id) }
+        case 'invite':
+          const a = state.accounts.find(a => a.id === action.payload)
+          state.event.participants.push({ id: action.payload, name: a.name, willingness: null })
+          return state
       }
       break
     case 'willingness':
-      mockup.events[mockup.events.findIndex(e => e.id === state.event.id)].participants = state.event.participants.map(p => p[0] === 0 ? [ 0, action.payload ] : p)
+      state.event.participants.find(p => p.id === 0).willingness = action.payload
       window.localStorage.setItem('Beezie', JSON.stringify(mockup))
-      return { ...state, event: { ...state.event, participants: state.event.participants.map(p => p[0] === 0 ? [ 0, action.payload ] : p) } }
+      return state
+    case 'friend':
+      switch (action.subtype) {
+        case 'add':
+          state.account.friends.push(action.payload)
+          state.accounts.find(a => a.id === action.payload).friends.push(0)
+          window.localStorage.setItem('Beezie', JSON.stringify(mockup))
+          return state
+      }
+      break
+    case 'guestbar':
+      return { ...state, guestbar: action.payload }
+    case 'showCalendar':
+      state.event.participants.find(p => p.id === 0).show = action.payload
+      window.localStorage.setItem('Beezie', JSON.stringify(mockup))
+      return { ...state }
+    case 'mainPageHide':
+      return { ...state, mainPageHide: action.payload }
   }
+  return state
 }
 
 const store = Redux.createStore(reducer)

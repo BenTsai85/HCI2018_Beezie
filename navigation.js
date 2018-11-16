@@ -1,6 +1,6 @@
 store.subscribe(() => {
   const state = store.getState()
-  if (state.nav === 'hide') {
+  if (state.mainPageHide) {
     $('.mainPage').hide()
     $('.subPage').show()
     $('.subPage > div').hide()
@@ -10,10 +10,10 @@ store.subscribe(() => {
     $('.subPage').hide()
     $('.navbar').show()
     $('.navbar .navitem').show()
-    $('.navbar .toggle').hide()
+    $('.navbar .toggled').hide()
     $('.page').hide()
     $('.navbar .' + state.nav).hide()
-    $('.navbar .' + state.nav + '.toggle').show()
+    $('.navbar .' + state.nav + '.toggled').show()
     $('.' + state.nav + '.page').show()
   }
 })
@@ -29,10 +29,44 @@ $('.navitem').click(e => {
   })
 })
 
-
 $().click(() => {
   $('.navbar').show()
   $('.navbar .navitem').show()
-  $('.navbar .toggle').hide()
+  $('.navbar .toggled').hide()
   $('.page').hide()
+})
+
+$('.backbutton').click(() => {
+  const state = store.getState()
+  if (state.subnav === 'editEvent') {
+    store.dispatch({
+      type: 'event',
+      subtype: 'reset'
+    })
+    store.dispatch({
+      type: 'subnav',
+      payload: 'eventDetail'
+    })
+  } else if (state.subnav === 'guest') {
+    store.dispatch({
+      type: 'subnav',
+      payload: 'eventDetail'
+    })
+  } else {
+    store.dispatch({
+      type: 'mainPageHide',
+      payload: false
+    })
+  }
+})
+
+$('.helpMark').click(() => {
+  store.dispatch({
+    type: 'mainPageHide',
+    payload: true
+  })
+  store.dispatch({
+    type: 'subnav',
+    payload: 'help'
+  })
 })

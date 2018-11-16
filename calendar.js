@@ -6,9 +6,9 @@ const pad2 = num => {
   return str
 }
 
-const timeadd15 = time => {
+const timeadd30 = time => {
   time = new Date(time.slice(0, 4), time.slice(4, 6), time.slice(6, 8), time.slice(8, 10), time.slice(10, 12))
-  time.setTime(time.getTime() + 900000)
+  time.setTime(time.getTime() + 1800000)
   return time.getFullYear() + pad2(time.getMonth()) + pad2(time.getDate()) + pad2(time.getHours()) + pad2(time.getMinutes())
 }
 
@@ -39,7 +39,7 @@ store.subscribe(() => {
   $('.circle.untoggled.' + page.button).hide()
 
   for (let temp of calendar) {
-    for (let time = temp[0]; time <= temp[1]; time = timeadd15(time)) {
+    for (let time = temp[0]; time <= temp[1]; time = timeadd30(time)) {
       $('#' + time).css({ backgroundColor: num2color(temp[2]), borderBottomColor: num2color(temp[2]), borderBottomStyle: 'solid' })
     }
   }
@@ -49,7 +49,7 @@ store.dispatch({
   type: 'init'
 })
 
-var tapped = false, doubleTapped = false, color = '#000000'
+var tapped = false, doubleTapped = false, color = '#000000', offsetTop, offsetLeft
 
 $('.availitem').click(e => {
   let target = e.currentTarget
@@ -90,6 +90,8 @@ $('.mainPage .timeblock').on('touchstart', e => {
     doubleTapped = true
 
     const element = $(e.target)[0]
+    offsetTop = element.offsetTop
+    offsetLeft = element.offsetLeft
     element.style.backgroundColor = color
     if (color === '#ffffff') {
       element.style.borderBottomStyle = 'dotted'
@@ -142,10 +144,9 @@ $('.mainPage .timeblock').on('touchmove', e => {
   if (doubleTapped) {
     const touch = e.originalEvent.touches[0]
     $('.timeblock').each((index, element) => {
-      if (!(
-        touch.clientX <= element.offsetLeft || touch.clientX >= element.offsetLeft + element.offsetWidth ||
-        touch.clientY + $('.timewrapper')[0].scrollTop <= element.offsetTop  || touch.clientY + $('.timewrapper')[0].scrollTop >= element.offsetTop + element.offsetHeight
-      )) {
+      if (element.offsetLeft === offsetLeft && touch.clientX > offsetLeft && touch.clientX < offsetLeft + element.offsetWidth &&
+          ((element.offsetTop > offsetTop && touch.clientY + $('.timewrapper')[0].scrollTop > element.offsetTop) ||
+          (touch.clientY + $('.timewrapper')[0].scrollTop < element.offsetTop + element.offsetHeight && element.offsetTop < offsetTop))) {
         element.style.backgroundColor = color
         if (color === '#ffffff') {
           element.style.borderBottomStyle = 'dotted'
@@ -157,4 +158,8 @@ $('.mainPage .timeblock').on('touchmove', e => {
       }
     })
   }
+})
+
+$('.questionMark').click(e => {
+  $('.popupPage').show()
 })
