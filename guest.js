@@ -12,7 +12,7 @@ store.subscribe(() => {
         </td> \
         <td> \
           <a href="#">' + a.name + '</a> \
-          <p>' + (a.willingness === 0 ? 'Going' : a.willingness === 1 ? 'Maybe' : a.willingness === 2 ? 'No' : '') + '</p> \
+          <p>' + (a.willingness === 0 ? 'Going' : a.willingness === 1 ? 'Maybe' : a.willingness === 2 ? 'No' : 'Pending') + '</p> \
         </td> \
       </tr> \
     '))  

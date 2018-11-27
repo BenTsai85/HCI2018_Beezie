@@ -71,3 +71,7 @@
   left: calc(50% - 35pt);
   margin-bottom: 10pt;
 }
+
+.createEventName::placeholder {
+  color: white;
+}

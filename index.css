@@ -30,6 +30,7 @@ hr {
   margin: 5pt;
   width: 15pt;
   z-index: 2;
+  margin: 5pt;
 }
 
 .helpMark {
@@ -40,4 +41,5 @@ hr {
   background-color: white;
   border-radius: 12.5pt;
   z-index: 1;
+  margin: 5pt;
 }

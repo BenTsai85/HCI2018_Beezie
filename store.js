@@ -1,6 +1,6 @@
 const initialState = {
   calendar: {
-    button: 'unavailable',
+    button: 'free',
     color: '#000000',
     dbltap: false,
   },

@@ -20,11 +20,11 @@ const color2num = color => {
 }
 
 const num2color = num => {
-  let str = Math.floor(85 * num).toString(16)
-  if (str.length < 2) {
+  let str = (Math.floor(85 * num) * 256 * 256 + Math.floor(35 * num) * 256 + 38655).toString(16)
+  while (str.length < 6) {
     str = '0' + str
   }
-  return '#' + str + str + str
+  return '#' + str
 }
 
 store.subscribe(() => {
@@ -49,7 +49,7 @@ store.dispatch({
   type: 'init'
 })
 
-var tapped = false, doubleTapped = false, color = '#000000', offsetTop, offsetLeft
+var tapped = false, doubleTapped = false, color = '#0096ff', offsetTop, offsetLeft
 
 $('.availitem').click(e => {
   let target = e.currentTarget
@@ -63,16 +63,16 @@ $('.availitem').click(e => {
   })
 
   switch (button) {
-    case 'unavailable':
-      color = '#000000'
-      break
-    case 'unlikely':
-      color = '#555555'
+    case 'free':
+      color = '#0096ff'
       break
     case 'likely':
-      color = '#aaaaaa'
+      color = '#55b9ff'
       break
-    case 'free':
+    case 'unlikely':
+      color = '#aadcaa'
+      break
+    case 'unavailable':
       color = '#ffffff'
       break
   }
