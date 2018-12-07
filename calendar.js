@@ -49,7 +49,7 @@ store.dispatch({
   type: 'init'
 })
 
-var hold = false, color = '#0096ff', offsetTop, offsetLeft
+var hold = false, draw = false, color = '#0096ff', offsetTop, offsetLeft
 
 $('.availitem').click(e => {
   let target = e.currentTarget
@@ -78,26 +78,32 @@ $('.availitem').click(e => {
   }
 })
 
-$('.mainPage .timeblock').on('taphold', e => {
-  hold = true
-  e.preventDefault()
+$('.mainPage .timeblock').on('touchstart', e => {
+  hold = setTimeout(() => {
+    hold = false
+    draw = true
+    e.preventDefault()
 
-  const element = $(e.target)[0]
-  offsetTop = element.offsetTop
-  offsetLeft = element.offsetLeft
-  element.style.backgroundColor = color
-  if (color === '#ffffff') {
-    element.style.borderBottomStyle = 'dotted'
-    element.style.borderBottomColor = '#eeeeee'
-  } else {
-    element.style.borderBottomStyle = 'solid'
-    element.style.borderBottomColor = color
-  }
+    const element = $(e.target)[0]
+    offsetTop = element.offsetTop
+    offsetLeft = element.offsetLeft
+    element.style.backgroundColor = color
+    if (color === '#ffffff') {
+      element.style.borderBottomStyle = 'dotted'
+      element.style.borderBottomColor = '#eeeeee'
+    } else {
+      element.style.borderBottomStyle = 'solid'
+      element.style.borderBottomColor = color
+    }
+  }, 500)
 })
 
 $('.mainPage .timeblock').on('touchend', e => {
   if (hold) {
+    clearTimeout(hold)
     hold = false
+  } else {
+    draw = false
     const calendar = []
     let date
     let temp = null
@@ -133,7 +139,7 @@ $('.mainPage .timeblock').on('touchend', e => {
 })
 
 $('.mainPage .timeblock').on('touchmove', e => {
-  if (hold) {
+  if (draw) {
     const touch = e.originalEvent.touches[0]
     $('.timeblock').each((index, element) => {
       if (element.offsetLeft === offsetLeft && touch.clientX > offsetLeft && touch.clientX < offsetLeft + element.offsetWidth &&
