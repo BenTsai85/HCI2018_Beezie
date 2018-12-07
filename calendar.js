@@ -49,7 +49,7 @@ store.dispatch({
   type: 'init'
 })
 
-var hold = false, draw = false, color = '#0096ff', offsetTop, offsetLeft
+var hold = false, draw = false, color = '#0096ff', offsetTop, offsetLeft, scrollY
 
 $('.availitem').click(e => {
   let target = e.currentTarget
@@ -79,10 +79,11 @@ $('.availitem').click(e => {
 })
 
 $('.mainPage .timeblock').on('touchstart', e => {
+  e.preventDefault()
+  scrollY = e.originalEvent.touches[0].clientY
   hold = setTimeout(() => {
     hold = false
     draw = true
-    e.preventDefault()
 
     const element = $(e.target)[0]
     offsetTop = element.offsetTop
@@ -139,7 +140,10 @@ $('.mainPage .timeblock').on('touchend', e => {
 })
 
 $('.mainPage .timeblock').on('touchmove', e => {
-  if (draw) {
+  if (hold) {
+    clearTimeout(hold)
+    hold = false
+  } else if (draw) {
     const touch = e.originalEvent.touches[0]
     $('.timeblock').each((index, element) => {
       if (element.offsetLeft === offsetLeft && touch.clientX > offsetLeft && touch.clientX < offsetLeft + element.offsetWidth &&
@@ -155,6 +159,9 @@ $('.mainPage .timeblock').on('touchmove', e => {
         }
       }
     })
+  } else {
+    $('.timewrapper')[0].scrollTop += scrollY - e.originalEvent.touches[0].clientY
+    scrollY = e.originalEvent.touches[0].clientY
   }
 })
 
